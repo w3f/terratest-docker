@@ -9,7 +9,7 @@ jobs:
       - setup_remote_docker
       - run:
           command: |
-            /scripts/build-image.sh web3f/terrratest .
+            /scripts/build-image.sh web3f/terratest .
 
   publishImage:
     docker:
@@ -19,7 +19,7 @@ jobs:
       - setup_remote_docker
       - run:
           command: |
-            /scripts/publish-image.sh web3f/terrratest
+            /scripts/publish-image.sh web3f/terratest
 
 
 workflows:
