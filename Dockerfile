@@ -33,6 +33,14 @@ RUN set -x && \
     chmod +x ./terraform && \
     mv terraform ${ARTIFACT_DIR}/
 
+# Install helm
+ARG HELM_SHA256=018f9908cb950701a5d59e757653a790c66d8eda288625dbb185354ca6f41f6b
+ARG HELM_VERSION=v3.2.1
+ADD https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz ${BUILD_DIR}/helm.tar.gz
+RUN set -x && \
+    echo "${HELM_SHA256}  ${BUILD_DIR}/helm.tar.gz" | sha256sum -c - && \
+    tar -xvf helm.tar.gz && \
+    mv linux-amd64/helm ${ARTIFACT_DIR}/
 
 
 FROM google/cloud-sdk:alpine
